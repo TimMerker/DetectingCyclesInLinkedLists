@@ -1,2 +1,2 @@
 # DetectingCyclesInLinkedLists
-Implementation of Floyd's Tortoise and Hare Algorithm
+Implementation of Floyd's Tortoise and Hare Algorithm for LinkedLists.
