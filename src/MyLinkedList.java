@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 class MyLinkedList {
     Node head;
     Node tail;
@@ -131,6 +133,33 @@ class MyLinkedList {
                 }
             }
             return false;
+        }
+        /**
+         * Floyd's Tortoise and Hare Algorithm; Finds circle entree.
+         */
+        public Node detectCycle(Node head) {
+            Node tortoise = head;
+            Node hare = head;
+            boolean hasCycle = false;
+            while (hare != null && hare.next != null){
+                tortoise = tortoise.next;
+                hare = hare.next.next;
+                if (tortoise == hare){
+                    hasCycle = true;
+                    break;
+                }
+            }
+            if (!hasCycle){
+                return null;
+            }
+            else{
+                hare = head;
+                while (tortoise != hare){
+                    tortoise = tortoise.next;
+                    hare = hare.next;
+                }
+                return tortoise;
+            }
         }
     }
 
