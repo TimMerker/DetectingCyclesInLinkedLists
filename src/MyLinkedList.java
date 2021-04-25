@@ -161,15 +161,43 @@ class MyLinkedList {
                 return tortoise;
             }
         }
+
+        /***
+         * Finds the Intersection of two LinkedLists using a HashMap. Uses O(n+m) time complexity and O(m) space.
+         */
+/*        public Node getIntersectionNode(Node headA, Node headB) {
+            HashSet<Node> seen = new HashSet<Node>();
+            Node temp = headA;
+            while (temp != null){
+                seen.add(temp);
+                temp = temp.next;
+            }
+            Node temp2 = headB;
+            while (temp2 != null){
+                if (seen.contains(temp2)){
+                    return temp2;
+                }
+                temp2 = temp2.next;
+            }
+            return null;
+        }*/
+        /**
+         * Finds the Intersection of two LinkedLists using two poitners.Uses O(n+m) time complextiy, but O(1) space.
+         */
+        public Node getIntersectionNode(Node headA, Node headB){
+            Node tempA = headA;
+            Node tempB = headB;
+
+            while(tempA != tempB){
+                tempA = tempA == null ? headB : tempA.next;
+                tempB = tempB == null ? headA : tempB.next;
+            }
+            //tempA == tempB at this point because length of (List A + common) + (List B + common) == (List B + common) + (List A + common)
+            return tempA;
+        }
     }
 
     public static void main(String[] args) {
-        MyLinkedList obj = new MyLinkedList();
-        obj.addAtHead(3);
-        obj.addAtHead(2);
-        obj.addAtHead(1);
-        System.out.println(3);
-        System.out.println();
     }
 
 }
