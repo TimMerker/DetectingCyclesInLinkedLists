@@ -195,9 +195,39 @@ class MyLinkedList {
             //tempA == tempB at this point because length of (List A + common) + (List B + common) == (List B + common) + (List A + common)
             return tempA;
         }
-    }
 
+        /**
+         * Removes Nth node from the End of the LinkedList. One needs to calculate the length of the list,
+         * and create a new Node which points at the head of the list, in case the head of the list needs to be deleted.
+         *
+         */
+        public Node removeNthFromEnd(Node head, int n) {
+            int length = 0;
+            Node dummy = new Node(0);
+            dummy.next = head;
+            Node first = head;
+            while(first != null){
+                first = first.next;
+                length++;
+            }
+            length -= n;
+            first = dummy;
+            while(0 < length){
+                first = first.next;
+                length--;
+            }
+            first.next = first.next.next;
+            return dummy.next;
+        }
+
+    }
     public static void main(String[] args) {
+        MyLinkedList obj = new MyLinkedList();
+        obj.addAtHead(5);
+        obj.addAtHead(4);
+        obj.addAtHead(3);
+        obj.addAtHead(2);
+        obj.addAtHead(1);
     }
 
 }
